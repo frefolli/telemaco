@@ -1,0 +1,39 @@
+@startuml
+
+/' Attori '/
+:Bot: as Bot
+
+/' Casi d'Uso '/
+(Aggiunge Utente Al Gruppo) as aggiungeUtenteAlGruppo
+(Aggiunge Utente Al Canale) as aggiungeUtenteAlCanale
+
+(Pubblica Annuncio sul Canale) as pubblicaAnnuncioSulCanale
+(Pubblica Annuncio Studente sul Canale) as pubblicaAnnuncioStudenteSulCanale
+(Pubblica Annuncio Rappresentante sul Canale) as pubblicaAnnuncioRappresentanteSulCanale
+
+(Legge Messaggi Spam sul Gruppo) as leggeMessaggiSulGruppo
+(Legge Annunci Spam sul Canale) as leggeAnnunciSulCanale
+(Segnala Spam Agli Amministratori) as segnalaSpamAgliAmministratori
+
+(Ammonisce Utente) as ammonisceUtente
+(Dispone Ban All'Utente) as disponeBanAllUtente
+(Revoca Ban All'Utente) as revocaBanAllUtente
+
+/' Relazioni '/
+pubblicaAnnuncioStudenteSulCanale -left-|> pubblicaAnnuncioSulCanale
+pubblicaAnnuncioRappresentanteSulCanale -right-|> pubblicaAnnuncioSulCanale
+
+Bot -left-> aggiungeUtenteAlGruppo
+Bot -left-> aggiungeUtenteAlCanale
+
+Bot -down-> pubblicaAnnuncioSulCanale
+
+Bot -up-> leggeMessaggiSulGruppo
+Bot -up-> leggeAnnunciSulCanale
+Bot -up-> segnalaSpamAgliAmministratori
+
+Bot -right-> ammonisceUtente
+Bot -right-> disponeBanAllUtente
+Bot -right-> revocaBanAllUtente
+
+@enduml
