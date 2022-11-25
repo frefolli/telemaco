@@ -1,0 +1,65 @@
+@startuml
+
+/' Entita' '/
+class Utente {
+    + id
+    - tag
+}
+
+class Amministratore
+
+class Rappresentante
+
+class Gruppo {
+    + id
+    - nome
+}
+
+class GruppoDiAteneo
+class GruppoDiLaurea
+class GruppoDiInsegnamento
+class GruppoDiRappresentanza
+
+class Canale {
+    + id
+    - nome
+}
+
+class ListaDiRappresentanza {
+    + id
+    - nome
+}
+
+/' Relazioni '/
+
+/' Parentela '/
+Amministratore -left-|> Utente
+Rappresentante -right-|> Utente
+
+GruppoDiAteneo -left-|> Gruppo
+GruppoDiLaurea -up-|> Gruppo
+GruppoDiInsegnamento -right-|> Gruppo
+GruppoDiRappresentanza -down-|> Gruppo
+
+CanaleDiAteneo -left-|> Canale
+CanaleDiLaurea -down-|> Canale
+CanaleDiInsegnamento -right-|> Canale
+CanaleDiRappresentanza -up-|> Canale
+
+/' Collegamenti '/
+ListaDiRappresentanza }o--|| Rappresentante
+ListaDiRappresentanza ||--|| GruppoDiRappresentanza
+ListaDiRappresentanza ||--|| CanaleDiRappresentanza
+
+Rappresentante ||--o{ GruppoDiRappresentanza
+
+CanaleDiRappresentanza ||--|| GruppoDiRappresentanza
+CanaleDiInsegnamento ||--|| GruppoDiInsegnamento
+CanaleDiLaurea ||--|| GruppoDiLaurea
+CanaleDiAteneo ||--|| GruppoDiAteneo
+
+GruppoDiInsegnamento }o--o{ Utente
+GruppoDiLaurea }o--o{ Utente
+GruppoDiAteneo }o--o{ Utente
+
+@enduml

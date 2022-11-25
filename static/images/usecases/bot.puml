@@ -1,0 +1,17 @@
+@startuml
+
+/' Attori '/
+:Bot: as Bot
+:BotGestioneUtenti: as BotGestioneUtenti
+:BotGestioneAnnunci: as BotGestioneAnnunci
+:BotGestioneSpam: as BotGestioneSpam
+:BotGestioneGalera: as BotGestioneGalera
+
+/' Casi d'Uso '/
+/' Relazioni '/
+BotGestioneUtenti -left-|> Bot
+BotGestioneAnnunci -up-|> Bot
+BotGestioneGalera -right-|> Bot
+BotGestioneSpam -down-|> Bot
+
+@enduml

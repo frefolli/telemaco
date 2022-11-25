@@ -1,0 +1,16 @@
+@startuml
+
+/' Attori '/
+:BotGestioneSpam: as BotGestioneSpam
+
+/' Casi d'Uso '/
+(Legge Messaggi Spam sul Gruppo) as leggeMessaggiSulGruppo
+(Legge Annunci Spam sul Canale) as leggeAnnunciSulCanale
+(Segnala Spam Agli Amministratori) as segnalaSpamAgliAmministratori
+
+/' Relazioni '/
+BotGestioneSpam -left-> leggeMessaggiSulGruppo
+BotGestioneSpam -up-> leggeAnnunciSulCanale
+BotGestioneSpam -right-> segnalaSpamAgliAmministratori
+
+@enduml
